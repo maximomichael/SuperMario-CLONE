@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Inimigo/slimeWalk1.png" type="Texture" id=1]
+[ext_resource path="res://assets/Inimigo/slimeWalk2.png" type="Texture" id=2]
+[ext_resource path="res://assets/Inimigo/slimeDead.png" type="Texture" id=3]
+[ext_resource path="res://script/Enemy.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 26.1773
+height = 54.7887
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="SpriteEnemy" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="SpriteDeath" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 16.4155 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="CollisionEnemy" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2.10224 )
+rotation = 1.5708
+shape = SubResource( 2 )
